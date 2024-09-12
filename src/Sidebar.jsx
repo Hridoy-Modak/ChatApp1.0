@@ -8,7 +8,7 @@ import { IoSearch } from "react-icons/io5";
 
 const Sidebar = () => {
   return (
-    <>
+    <div className="bg-[rgb(236,222,228)] bg-[radial-gradient(circle,_rgba(236,222,228,1)_0%,_rgba(167,225,233,1)_24%,_rgba(245,254,249,1)_67%,_rgba(115,179,255,1)_100%)]">
       <div className="flex flex-row-reverse">
         <div className="topbar w-full h-[100px] shadow-lg flex justify-between">
           <div className=" flex h-full items-center ml-9 relative">
@@ -59,7 +59,7 @@ const Sidebar = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
