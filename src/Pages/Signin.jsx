@@ -6,8 +6,14 @@ import { FaFacebook } from "react-icons/fa6";
 const Signin = () => {
   return (
     <div className="flex relative bg-[rgb(236,222,228)] bg-[radial-gradient(circle,_rgba(236,222,228,1)_0%,_rgba(167,225,233,1)_24%,_rgba(245,254,249,1)_67%,_rgba(115,179,255,1)_100%)]">
-      <img className=" z-10 absolute w-[70px] top-[7%] left-[15%] drop-shadow-lg  rounded-3xl" src="./logo.png" alt="" />
-      <h2 className="absolute top-[16%] left-[14.5%] text-2xl font-bold z-10">Chatapp</h2>
+      <img
+        className=" z-10 absolute w-[70px] top-[7%] left-[15%] drop-shadow-lg  rounded-3xl"
+        src="./logo.png"
+        alt=""
+      />
+      <h2 className="absolute top-[16%] left-[14.5%] text-2xl font-bold z-10">
+        Chatapp
+      </h2>
       <div className="w-1/2 h-screen flex items-center">
         <img className=" bg-cover drop-shadow-2xl" src={Signinimg} alt="" />
       </div>
@@ -49,7 +55,9 @@ const Signin = () => {
             </div>
             <div className="bg-white h-[60px] items-center gap-2 px-1 w-[150px] rounded-lg flex cursor-pointer justify-center">
               <FaFacebook className="text-[50px] w-[40%] px-1 border-r-2 text-blue-800" />
-              <p className=" text-[15px] text-center mr-1">Login with Facebook</p>
+              <p className=" text-[15px] text-center mr-1">
+                Login with Facebook
+              </p>
             </div>
           </div>
         </div>
