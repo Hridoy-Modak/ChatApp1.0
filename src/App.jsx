@@ -15,9 +15,10 @@ let router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/Signin" element={<Signin />} />
+      <Route path="/Signup" element={<Signup />} />
       <Route path="/" element={<Root />}>
-        <Route index element={<Home/>}/>
-        <Route path="/groups" element={<Groups/>}/>
+        <Route index element={<Home />} />
+        <Route path="/groups" element={<Groups />} />
       </Route>
     </>
   )

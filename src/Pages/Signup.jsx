@@ -4,10 +4,12 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa";
 import { IoIosEyeOff } from "react-icons/io";
-
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
-  let [passwordshow, setPasswordshow]=useState(false);
+  const auth = getAuth();
+
+  let [passwordshow, setPasswordshow] = useState(false);
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -34,11 +36,21 @@ const Signup = () => {
     }
     if (!email) {
       setEmailerr("Email is Required");
-    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
-      setEmailerr("Invalid email")
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setEmailerr("Invalid email");
     }
     if (!password) {
       setPassworderr("Password is Required");
+    }
+    if (name && email && password) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log(userCredential);
+        })
+        .catch((error) => {
+          console.log(error);
+          
+        });
     }
   };
 
@@ -64,8 +76,10 @@ const Signup = () => {
                 onChange={handlename}
                 type="text"
                 placeholder="Enter your Full Name"
-                className={`border placeholder:text-[13px] px-[20px] py-3 rounded-lg  w-full shadow-md ${nameerr? "border-red-500":""} `}
-                />
+                className={`border placeholder:text-[13px] px-[20px] py-3 rounded-lg  w-full shadow-md ${
+                  nameerr ? "border-red-500" : ""
+                } `}
+              />
               {nameerr && (
                 <p className="text-red-600 text-[10px] ml-1">{nameerr}</p>
               )}
@@ -73,7 +87,9 @@ const Signup = () => {
             <div>
               <input
                 onChange={handleemail}
-                className={`border placeholder:text-[13px] px-[20px] py-3 rounded-lg  w-full shadow-md ${emailerr? "border-red-500":""} `}
+                className={`border placeholder:text-[13px] px-[20px] py-3 rounded-lg  w-full shadow-md ${
+                  emailerr ? "border-red-500" : ""
+                } `}
                 type="email"
                 placeholder="Enter your Email"
               />
@@ -84,28 +100,28 @@ const Signup = () => {
             <div className="relative">
               <input
                 onChange={handlepassword}
-                className={`border placeholder:text-[13px] px-[20px] py-3 rounded-lg  w-full shadow-md ${passworderr? "border-red-500":""} `}
+                className={`border placeholder:text-[13px] px-[20px] py-3 rounded-lg  w-full shadow-md ${
+                  passworderr ? "border-red-500" : ""
+                } `}
                 type={passwordshow ? "text" : "password"}
                 placeholder="Enter your password"
               />
-              {passwordshow ?
-              <FaRegEye
-              placeholder="Enter your password"
-              onClick={()=>setPasswordshow(false)}
-              className="absolute top-[50%] translate-y-[-50%] right-3 text-[20px]"/>
-              :
-              <IoIosEyeOff
-              onClick={()=>setPasswordshow(true)}
-              className="absolute top-[50%] translate-y-[-50%] right-3 text-[20px]"/>
-              }
-              
-
-
+              {passwordshow ? (
+                <FaRegEye
+                  placeholder="Enter your password"
+                  onClick={() => setPasswordshow(false)}
+                  className="absolute top-[50%] translate-y-[-50%] right-3 text-[20px]"
+                />
+              ) : (
+                <IoIosEyeOff
+                  onClick={() => setPasswordshow(true)}
+                  className="absolute top-[50%] translate-y-[-50%] right-3 text-[20px]"
+                />
+              )}
 
               {passworderr && (
                 <p className="text-red-600 text-[10px] ml-1">{passworderr}</p>
               )}
-
             </div>
             <button
               onClick={handlesubmit}
