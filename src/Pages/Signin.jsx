@@ -3,6 +3,7 @@ import Signinimg from "../assets/images/signin.png";
 import { FaUserCircle } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const Signin = () => {
   return (
     <div className="flex relative bg-[rgb(236,222,228)] bg-[radial-gradient(circle,_rgba(236,222,228,1)_0%,_rgba(167,225,233,1)_24%,_rgba(245,254,249,1)_67%,_rgba(115,179,255,1)_100%)]">
@@ -43,8 +44,8 @@ const Signin = () => {
             </button>
           </div>
           <p className="text-[12px] mt-3">
-            I don't have already an accoount?{" "}
-            <span className="text-blue-800 font-semibold"> Signup</span>
+            I don't have already an accoount?
+            <span className="text-blue-800 font-semibold hover:text-[13px]"><Link to="/signup"> Signup</Link></span>
           </p>
           <p className="text-[12px] mt-3">Forgot Password ?</p>
           <p className="text-[15px] mt-3">OR</p>
