@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Signinimg from "../assets/images/signin.png";
 import { FaUserCircle } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 const Signin = () => {
+  // const auth = getAuth();
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  let [emailerr, setEmailerr] = useState("");
+  let [passworderr, setPassworderr] = useState("");
+
+  let handleemail = (e) => {
+    setEmail(e.target.value);
+  };
+  let handlepassword = (e) => {
+    setPassword(e.target.value);
+  };
+  let handlesubumit = () => {
+    console.log(email, password);
+    if (!email) {
+      setEmailerr("Email is required");
+    } else if (!/[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}/.test(email)) {
+      setEmailerr("Email is invalid");
+      valid = false;
+    }
+    if (!password) {
+      setPassworderr("Password is required");
+      valid = false;
+    }
+    console.log(passworderr);
+  };
+
   return (
     <div className="flex relative bg-[rgb(236,222,228)] bg-[radial-gradient(circle,_rgba(236,222,228,1)_0%,_rgba(167,225,233,1)_24%,_rgba(245,254,249,1)_67%,_rgba(115,179,255,1)_100%)]">
       <img
@@ -27,25 +56,42 @@ const Signin = () => {
           <div className="flex flex-col gap-8 w-[55%]">
             <div className="relative">
               <input
-                className="border placeholder:text-[13px] px-[20px] py-3 rounded-lg placeholder:opacity-40 w-full shadow-md"
+                onChange={handleemail}
+                className={`border ${
+                  emailerr ? "border-red-500" : ""
+                } placeholder:text-[13px] px-[20px] py-3 rounded-lg placeholder:opacity-40 w-full shadow-md `}
                 type="email"
                 placeholder="Enter your Email"
               />
+              {emailerr && (
+                <p className="text-red-600 text-[10px] ml-1">{emailerr}</p>
+              )}
             </div>
             <div className="relative">
               <input
-                className="border placeholder:text-[13px] px-[20px] py-3 rounded-lg placeholder:opacity-40 w-full shadow-md"
+                onChange={handlepassword}
+                className={`border ${
+                  passworderr ? "border-red-500" : ""
+                } placeholder:text-[13px] px-[20px] py-3 rounded-lg placeholder:opacity-40 w-full shadow-md `}
                 type="password"
                 placeholder="Enter your password"
               />
+              {passworderr && (
+                <p className="text-red-600 text-[10px] ml-1">{passworderr}</p>
+              )}
             </div>
-            <button className=" bg-blue-300 px-5 py-1 rounded-md shadow-md">
+            <button
+              onClick={handlesubumit}
+              className=" bg-blue-300 px-5 py-1 rounded-md shadow-md"
+            >
               Login
             </button>
           </div>
           <p className="text-[12px] mt-3">
             I don't have already an accoount?
-            <span className="text-blue-800 font-semibold hover:text-[13px]"><Link to="/signup"> Signup</Link></span>
+            <span className="text-blue-800 font-semibold hover:text-[13px]">
+              <Link to="/signup"> Signup</Link>
+            </span>
           </p>
           <p className="text-[12px] mt-3">Forgot Password ?</p>
           <p className="text-[15px] mt-3">OR</p>
