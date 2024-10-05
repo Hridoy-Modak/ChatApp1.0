@@ -10,6 +10,7 @@ import Home from "./Pages/Home";
 import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
 import Groups from "./Templates/Groups";
+import Message from "./Pages/Message";
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ let router = createBrowserRouter(
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         <Route path="/groups" element={<Groups />} />
+        <Route path="/message" element={<Message />} />
       </Route>
     </>
   )
