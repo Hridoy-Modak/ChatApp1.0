@@ -2,14 +2,12 @@ import React from "react";
 
 const Friendlist = () => {
   return (
-    <div className=" h-[100%] bg-white bg-opacity-40 shadow-xl  overflow-auto scrollbar-thin ">
-      <div className="">
-        <div className="flex border-b-[1.5px] border-primary_blue justify-between px-3 py-2">
-          <h1 className="text-[20px] font-bold text-primary_blue">
-            Friend List
-          </h1>
-          <p className="text-[20px] font-bold text-primary_blue">50</p>
-        </div>
+    <div className=" h-[100%] bg-white bg-opacity-40 shadow-xl   ">
+      <div className="h-[8%] flex border-b-[1.5px] border-primary_blue justify-between px-3 py-2">
+        <h1 className="text-[20px] font-bold text-primary_blue">Friend List</h1>
+        <p className="text-[20px] font-bold text-primary_blue">50</p>
+      </div>
+      <div className="h-[92%] overflow-auto scrollbar-thin ">
         {/* Friendlist cards */}
         <div className="flex justify-between items-center mx-1 px-3 py-3">
           <div className="flex items-center gap-3">
